@@ -86,7 +86,7 @@ public class RegisterFormController {
             valid = false;
             ValidationMessage.append("LastName is required. \n");
         }
-        else if (! LastName_txtfield.getText().matches("^[a-zA-Z]*$") ) {
+        else if (! LastName_txtfield.getText().matches("^[a-zA-Z]+$") ) {
             valid = false;
             ValidationMessage.append("LastName is invalid. \n");
         }
@@ -96,7 +96,7 @@ public class RegisterFormController {
             valid = false;
             ValidationMessage.append("Email is required. \n");
         }
-        else if (! Email_txtfield.getText().matches("^[a-zA-Z0-9._%+-]*" + Pattern.quote(CollegeEmail) + "$" )) {
+        else if (! Email_txtfield.getText().matches("^[a-zA-Z0-9._%+-]+" + Pattern.quote(CollegeEmail) + "$" )) {
             //  && LastName_txtfield.getText().contains(CollegeEmail)
             valid = false;
             ValidationMessage.append("Email is invalid. \n");
@@ -114,8 +114,8 @@ public class RegisterFormController {
         //  Zip Code
         if (ZipCode_txtfield.getText().isEmpty()) {
             valid = false;
-            ValidationMessage.append("ZipCode is required. \n"); // (0-4) = 5
-        } else if (ZipCode_txtfield.getText().matches("^[0-9]{4}$")) {
+            ValidationMessage.append("ZipCode is required. \n");
+        } else if (! ZipCode_txtfield.getText().matches("\\d{5}")) {
             valid = false;
             ValidationMessage.append("ZipCode is invalid. \n");
         }
